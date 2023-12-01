@@ -10,7 +10,7 @@ data.forEach((data) => {
     let number = 0;
 
     // Map the written numbers to a digit and use the map with a regex to fix the data
-    var mappedNumbers = {
+    let mappedNumbers = {
         one: 'o1e',
         two: 't2o',
         three: 't3e',
