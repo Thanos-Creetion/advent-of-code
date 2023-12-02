@@ -1,7 +1,7 @@
 {
-  "name": "part-2",
+  "name": "advent-of-code",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.mjs",
   "dependencies": {
     "fs": "^0.0.1-security"
   }
