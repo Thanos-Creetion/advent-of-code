@@ -49,13 +49,13 @@ data.forEach((data) => {
 			miniRed = red;
 		}
 
-        if (miniGreen == 0) {
+		if (miniGreen == 0) {
 			miniGreen = green;
 		} else if (green != 0 && miniGreen < green) {
 			miniGreen = green;
 		}
 
-        if (miniBlue == 0) {
+		if (miniBlue == 0) {
 			miniBlue = blue;
 		} else if (blue != 0 && miniBlue < blue) {
 			miniBlue = blue;
@@ -67,8 +67,8 @@ data.forEach((data) => {
 		sum += parseInt(id);
 	}
 
-    // Add sum of minimum power to powerSum
-    powerSum += miniRed * miniGreen * miniBlue;
+	// Add sum of minimum power to powerSum
+	powerSum += miniRed * miniGreen * miniBlue;
 });
 
 // Give result sums
