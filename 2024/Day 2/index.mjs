@@ -43,6 +43,7 @@ for (let i = 0; i < data.length; i++) {
 console.log(counter);
 
 
+
 // All the functions for this puzzle
 
 // One iteration of checking a report
