@@ -130,4 +130,4 @@ dist
 .pnp.*
 
 # Remove the AOC input
-./*/*/data.txt
+*/data.txt
