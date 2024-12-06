@@ -59,6 +59,7 @@ console.log(trueNumber);
 console.log(falseNumber);
 
 
+
 // All the functions for today
 
 // Validate if an update is correct
