@@ -1,5 +1,5 @@
 // To log the test function
-let permutations = permutator(4, 2).slice();
+let permutations = permutator(5, 2).slice();
 console.log(permutations);
 
 
