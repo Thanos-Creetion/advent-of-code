@@ -102,7 +102,7 @@ function permutator(length, numbers) {
 
     // Check what the max number is
     if (length == 1) {
-        max = 3;
+        max = numbers;
     }
     else {
         max = Math.pow(numbers, length);
