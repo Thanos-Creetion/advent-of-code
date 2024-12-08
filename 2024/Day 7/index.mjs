@@ -5,7 +5,7 @@ let data = readFileSync('2024/Day 7/data.txt').toString().split(/\r\n/);
 let lines = [];
 let result = 0;
 
-// Turn the original data into usefull line and convert all the strings to ints for easier calculations
+// Turn the original data into usefull lines and convert all the strings to ints for easier calculations
 for (let i = 0; i < data.length; i++) {
     let line = data[i].split(':');
     let numbers = line[1].match(/\d+/g);
