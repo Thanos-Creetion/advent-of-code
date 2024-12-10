@@ -26,9 +26,8 @@ let positions = trailheads(data);
 for (let i = 0; i < positions.length; i++) {
     let position = positions[i];
 
-    let count = score(map, position);
-    console.log('Done with ' + (i + 1) + ' / ' + positions.length);
-    result += count;
+    // console.log('Done with ' + (i + 1) + ' / ' + positions.length);
+    result += score(map, position);
 }
 
 // Log the result
@@ -61,13 +60,9 @@ function trailheads(data) {
 function score(base, pos) {
     let map = JSON.parse(JSON.stringify(base));
     let current = JSON.parse(JSON.stringify(pos));
-    // let map = base.slice();
-    // let current = pos.slice();
     let score = 0;
     let trails = 0;
     let crossroad = [];
-
-    // console.log('START');
 
     // Move through the map and find all the peaks you can get to from this trailhead
     while (true) {
@@ -80,15 +75,6 @@ function score(base, pos) {
             trails++;
         }
 
-        // console.log(position);
-        // console.log('CURRENT POSITION');
-        // console.log(current);
-        // console.log('OPTIONS');
-        // console.log(position);
-        // console.log('CURRENT HEIGHT');
-        // console.log(map[current[0]][current[1]]);
-        // console.table(map);
-
         // Move to the new position of it exists
         if (position.length > 0) {
             current = position[0].slice();
@@ -97,7 +83,6 @@ function score(base, pos) {
         // If the trail is finished, add one trail to score and close off path taken
         if (map[current[0]][current[1]][0] == 9) {
             score++;
-            // console.log('TRAIL FINISHED');
 
             // Check if there are more trails
             if (trails > 0) {
