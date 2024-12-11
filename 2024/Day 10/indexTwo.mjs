@@ -45,8 +45,6 @@ trailheads.forEach(pos => {
             if (data[pos[0]][pos[1]] == 9) score++;
             else found.push(...findNext(pos));
         });
-        
-        next = found.filter(x => x.length);
     }
 });
 
