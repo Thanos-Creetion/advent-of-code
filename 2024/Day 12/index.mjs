@@ -94,5 +94,22 @@ function adjacent(pos, letter, data) {
 
 // Get regions inside of positions
 function getRegions(positions) {
+    let regions = new Set();
 
+    // Example of DFS
+    positions.forEach(pos => {
+        let region = new Set();
+        let next = [ pos ];
+    
+        while (next.length) {
+            let found = [];
+    
+            next.forEach(pos => {
+                if (data[pos[0]][pos[1]] == 9) score++;
+                else found.push(...findNext(pos));
+            });
+
+            next = found;
+        }
+    });
 }
