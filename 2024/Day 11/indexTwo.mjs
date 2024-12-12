@@ -32,8 +32,6 @@ for (let i = 0; i < 75; i++) {
         }
     }
 
-    console.log(data);
-
     data = newData;
 }
 
