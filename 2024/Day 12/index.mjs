@@ -39,16 +39,18 @@ function price(data) {
         // Check if positions exist, and if so, calculate the area and perimeter
         if (!(positions[0] === undefined)) {
             // Get every single region inside of the positions
-            let regions = getRegions(positions);
-            
             console.log(letter);
-            // console.log(region);
-            let p = perimeter(letter, region, data);
-            console.log(region.length);
-            console.log(p);
+            let regions = areas(positions);
 
-            amount += region.length * p;
-            console.log(amount);
+            for (let j = 0; j < regions.length; j++) {
+                let region = regions[j];
+                
+                let p = perimeter(letter, region, data);
+                // console.log(region.length + ' * ' + p + ' = ' + (region.length * p));
+                amount += region.length * p;
+            }
+            
+            // console.log(amount);
         }
     }
 
@@ -93,23 +95,64 @@ function adjacent(pos, letter, data) {
 }
 
 // Get regions inside of positions
-function getRegions(positions) {
-    let regions = new Set();
+function areas(positions) {
+    let regions = [];
 
-    // Example of DFS
+    // Simple DFS to get each region
     positions.forEach(pos => {
-        let region = new Set();
+        let region = [];
         let next = [ pos ];
     
         while (next.length) {
             let found = [];
     
             next.forEach(pos => {
-                if (data[pos[0]][pos[1]] == 9) score++;
-                else found.push(...findNext(pos));
+                // Stringify arrays to check if pos is inside of region
+                let a = JSON.stringify(region);
+                let b = JSON.stringify(pos);
+
+                if (a.indexOf(b) == -1) {
+                    found.push(...following(pos, positions));
+                    region.push(pos);
+                }
             });
 
             next = found;
         }
+
+        // Sort the array
+        region.sort();
+
+        // Check if region already exists
+        let a = JSON.stringify(regions);
+        let b = JSON.stringify(region);
+
+        if (a.indexOf(b) == -1) regions.push(region);
     });
+
+    return regions;
+}
+
+// Get the following position
+function following(pos, data) {
+    let next = [];
+
+    // Check above
+    let target = [pos[0] - 1, pos[1]];
+    let index = data.findIndex(coords => coords.length === 2 && coords.every((value, i) => value === target[i]));
+    if (index != -1) next.push(data[index]);
+    // Check to the right
+    target = [pos[0], pos[1] + 1];
+    index = data.findIndex(coords => coords.length === 2 && coords.every((value, i) => value === target[i]));
+    if (index != -1) next.push(data[index]);
+    // Check below
+    target = [pos[0] + 1, pos[1]];
+    index = data.findIndex(coords => coords.length === 2 && coords.every((value, i) => value === target[i]));
+    if (index != -1) next.push(data[index]);
+    // Check to the left
+    target = [pos[0], pos[1] - 1];
+    index = data.findIndex(coords => coords.length === 2 && coords.every((value, i) => value === target[i]));
+    if (index != -1) next.push(data[index]);
+
+    return next;
 }
